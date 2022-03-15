@@ -1,4 +1,4 @@
-<? include_once 'conecta.php' ?>
+<? include_once 'conecta.php' // fiz testes de conexao com php e acabei deixando a tag mesmo ?>
 
 <?php  
 /* ADENDO * FIZ ESSA FILE POIS ACHEI QUE FICARIA MAIS FACIL DE  SUBIR NO GITHUB *
@@ -144,6 +144,34 @@ FROM
 GROUP BY ordernumber;
 HAVING 
    total > 1000;
+   
+12 - UNION - Eliminar as linhas duplicadas so shipaddress
+SELECT ShipName, ShipAddress from classicmodels.Orders 
+WHERE CustomerID ="WARTH" UNION SELECT ShipName, ShipAddress from classicmodels.Orders 
+WHERE CustomerID ="VINET"
+
+13 - UNION ALL - funciona como o UNION mas apresenta também as linhas duplicadas
+
+SELECT employeeID, firstname, lastname FROM classicmodels.names WHERE dept = "prod"
+UNION ALLSELECT employeeID, firstname, lastname FROM classicmodels.names WHERE city = "Orlando"
+UNION ALL
+SELECT employeeID, firstname, lastname FROM classicmodels.names WHERE division = "food"
+
+14 - LEFT JOIN - o termo key vai me dar os registros da tabela da esquerda com os equivalentes da tabela da direita
+SELECT 
+products.productCode, products.productName,productlines.textDescriptionID
+FROM
+    classicmodels.products 
+    LEFT JOIN classicmodels.productlines ON product.productLine = productline.productLine
+ORDER BY
+   product.productName;
+
+15 - RIGHT JOIN - processo oposto da LEFT JOIN
+SELECT productLine
+FROM classicmodels.productlines
+RIGHT JOIN classicmodels.products
+ON productline.productLine = product.productLine;
+
     */ 
 
     ?>
