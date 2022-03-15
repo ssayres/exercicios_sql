@@ -172,6 +172,15 @@ FROM classicmodels.productlines
 RIGHT JOIN classicmodels.products
 ON productline.productLine = product.productLine;
 
+
+16- SELECT DISTINCT - Mesma função do UNION
+
+SELECT ShipName, ShipAddress 
+FROM classicmodels.Orders 
+WHERE CustomerID ="WARTH" UNION SELECT ShipName, ShipAddress 
+FROM 
+classicmodels.Orders WHERE CustomerID ="VINET"
+
     */ 
 
     ?>
